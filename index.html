@@ -36,7 +36,7 @@ document.getElementById("products").innerHTML=products().filter(p=>(p.name||"").
 <div class="card"><img src="${p.image||''}" alt=""><h2>${p.name}</h2><div class="price">${p.price}</div><button onclick="order('${encodeURIComponent(p.name)}')">Order on WhatsApp</button></div>`).join("");
 }
 function order(name){
-let n=(typeof WHATSAPP_NUMBER!=="undefined"?WHATSAPP_NUMBER:"91XXXXXXXXXX");
+let n=(typeof WHATSAPP_NUMBER!=="undefined"?WHATSAPP_NUMBER:("918075945850");
 let msg=encodeURIComponent("Hi N-E-X-V-I-L-O, I would like to order: "+decodeURIComponent(name));
 location.href="https://wa.me/"+n+"?text="+msg;
 }
