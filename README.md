@@ -1,4 +1,4 @@
-# N-E-X-V-I-L-O Admin System
+# NEXVILO Admin System
 
 Files:
 - index.html — public product showcase
