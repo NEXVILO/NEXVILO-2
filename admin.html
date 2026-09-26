@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NEXVILO Admin</title>
+<style>body{font-family:Arial;margin:0;background:#f5f5f5}.wrap{max-width:700px;margin:auto;padding:20px}.box{background:white;padding:20px;border-radius:16px;margin-bottom:20px}input{width:100%;padding:12px;margin:7px 0;box-sizing:border-box}button{padding:12px;border:0;border-radius:9px;background:#111;color:white;margin:5px 0;cursor:pointer}.item{padding:12px;border:1px solid #ddd;border-radius:10px;margin:8px 0}</style></head>
+<body><div class="wrap"><h1>N-E-X-V-I-L-O Admin</h1>
+<div class="box"><h2>Add Product</h2>
+<input id="name" placeholder="Product name"><input id="price" placeholder="Price"><input id="image" placeholder="Image URL"><input id="meesho" placeholder="Meesho product URL/code">
+<button onclick="add()">Add Product</button></div>
+<div class="box"><h2>Products</h2><div id="list"></div></div></div>
+<script>
+function get(){return JSON.parse(localStorage.getItem("nexvilo_products")||"[]")}
+function save(x){localStorage.setItem("nexvilo_products",JSON.stringify(x))}
+function add(){let x=get();x.push({name:name.value,price:price.value,image:image.value,meesho:meesho.value});save(x);name.value=price.value=image.value=meesho.value="";render()}
+function del(i){let x=get();x.splice(i,1);save(x);render()}
+function render(){let x=get();list.innerHTML=x.map((p,i)=>`<div class="item"><b>${p.name}</b> — ${p.price}<br><button onclick="del(${i})">Delete</button></div>`).join("")||"No added products yet."}
+render();
+</script></body></html>
